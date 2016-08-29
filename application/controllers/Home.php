@@ -36,15 +36,13 @@ class Home extends CI_Controller {
             redirect('Login', 'refresh');
         }
         $datos['datosUsuario'] = $this->session->userdata('logged_in');
-        /* --- */
-                  
         $datos['menuUsuario'] = $this->crear_menu((int)$codusuario);
         $this->load->view('v_home', $datos);
 	}
     
     function crear_menu($codusuario) {
         $menu = "<li class=''><a href='Inicio/Index' title='Inicio'><i class='fa fa-lg fa-fw txt-color-blue fa-home'></i><span class='menu-item-parent'>Inicio</span></a></li>";
-        $menu = $menu . $this->crear_menu_nivel_1($codusuario));
+        $menu = $menu . $this->crear_menu_nivel_1($codusuario);
         return $menu;
     }
     
