@@ -38,9 +38,13 @@ class HomeController extends CI_Controller {
             redirect('LoginController', 'refresh');
         }
         $datos['datosUsuario'] = $this->session->userdata('logged_in');
+<<<<<<< HEAD:application/controllers/HomeController.php
         /* --- */
                   
         $datos['menuUsuario'] = "";//$this->crear_menu((int)$id);
+=======
+        $datos['menuUsuario'] = $this->crear_menu((int)$codusuario);
+>>>>>>> bca3bede2c5db0d8139f11a65b12d7272d09482f:application/controllers/Home.php
         $this->load->view('v_home', $datos);
 	}
     
