@@ -5,68 +5,82 @@ class MenuModel extends CI_Model {
         parent::__construct();
     }
     
-    public function menu_padre($id){
+    public function menu_padre($usunomusu){
         $cursor = oci_new_cursor($this->db->conn_id);    
-        $cod_error = 0;
-        $desc_error = "";
+        $coderror = 0;
+        $descerror = "";
+        $sql = "";
 
-        $params = array(array('name' => ':p_usucodigo'      , 'value' => $id,           'type' => SQLT_INT), //NUMBER
-                        array('name' => ':o_cursor'         , 'value' => $cursor,       'type' => OCI_B_CURSOR), //CURSOR
-                        array('name' => ':o_coderror'       , 'value' => $cod_error,    'type' => SQLT_INT), //NUMEBR
-                        array('name' => ':o_descerror'      , 'value' => $desc_error,   'type' => SQLT_CHR)  //VARCHAR2
-                  );
+        $sql = $sql . "begin pkg_menu.pr_recupera_menu_nivel0(:p_usucodigo, :o_cursor, :o_coderror, :o_descerror); end;";
         
-        $stmt = oci_parse($this->db->conn_id, "begin pkg_menu.pr_recupera_menu_nivel0(:p_usucodigo, :o_cursor, :o_coderror, :o_descerror); end;");
-        
-        foreach($params as $p){
-            oci_bind_by_name($stmt, $p['name'], $p['value'], null, $p['type']);
-        }
+        $stmt = oci_parse($this->db->conn_id, $sql);
+        oci_bind_by_name($stmt, ":p_usucodigo", $usunomusu);
+        oci_bind_by_name($stmt, ":o_cursor", $cursor, null, OCI_B_CURSOR);
+        oci_bind_by_name($stmt, ":o_coderror", $coderror, 2000);
+        oci_bind_by_name($stmt, ":o_descerror", $descerror, 2000);
 
         $res = ociexecute($stmt);
         if ($res){
-            $result = Array();
-            
+            $result = array();
+            $tieneDatos = false;
             oci_execute($cursor); // Execute the cursor
+            
             while ($entry = oci_fetch_assoc($cursor)) {
+                $tieneDatos = true;
                 array_push($result, $entry);
             }
-        }else{
-            $result = null;
-        }
-
-        return $result;
-    }
-
-    public function menu_hijo($id, $codigo){
-        $cursor = oci_new_cursor($this->db->conn_id);    
-        $cod_error = 0;
-        $desc_error = "";
-
-        $params = array(array('name' => ':p_usucodigo'      , 'value' => $id,           'type' => SQLT_INT), //NUMBER
-                        array('name' => ':p_opccodigo'      , 'value' => $codigo,       'type' => SQLT_INT), //NUMBER
-                        array('name' => ':o_cursor'         , 'value' => $cursor,       'type' => OCI_B_CURSOR), //CURSOR
-                        array('name' => ':o_coderror'       , 'value' => $cod_error,    'type' => SQLT_INT), //NUMEBR
-                        array('name' => ':o_descerror'      , 'value' => $desc_error,   'type' => SQLT_CHR)  //VARCHAR2
-                  );
-        
-        $stmt = oci_parse($this->db->conn_id, "begin pkg_menu.pr_recupera_menu_nivel_hijo(:p_usucodigo, :p_opccodigo, :o_cursor, :o_coderror, :o_descerror); end;");
-        
-        foreach($params as $p){
-            oci_bind_by_name($stmt, $p['name'], $p['value'], null, $p['type']);
-        }
-
-        $res = ociexecute($stmt);
-        if ($res){
-            $result = Array();
             
-            oci_execute($cursor); // Execute the cursor
-            while ($entry = oci_fetch_assoc($cursor)) {
-                array_push($result, $entry);
-            }
+            if (!$tieneDatos){ $result = false; }
         }else{
             $result = false;
         }
+        
+        
+        return array("coderror"  => $coderror, 
+                     "descerror" => $descerror,
+                     "cursor"    => $result);
+    }
+    
+    public function menu_hijo($usucodigo, $opccodigo){
+        $cursor = oci_new_cursor($this->db->conn_id);    
+        $coderror = 0;
+        $descerror = "";
+        $sql = "";
 
-        return $result;
+        $sql = $sql . "begin pkg_menu.pr_recupera_menu_nivel_hijo(";
+        $sql = $sql . "p_usucodigo => :p_usucodigo, ";
+        $sql = $sql . "p_opccodigo => :p_opccodigo, ";
+        $sql = $sql . "o_cursor => :o_cursor, ";
+        $sql = $sql . "o_coderror => :o_coderror, ";
+        $sql = $sql . "o_descerror => :o_descerror); ";
+        $sql = $sql . "end; ";
+        
+        $stmt = oci_parse($this->db->conn_id, $sql);
+        oci_bind_by_name($stmt, ":p_usucodigo", $usucodigo);
+        oci_bind_by_name($stmt, ":p_opccodigo", $opccodigo);
+        oci_bind_by_name($stmt, ":o_cursor", $cursor, null, OCI_B_CURSOR);
+        oci_bind_by_name($stmt, ":o_coderror", $coderror, 2000);
+        oci_bind_by_name($stmt, ":o_descerror", $descerror, 2000);
+
+        $res = ociexecute($stmt);
+        if ($res){
+            $result = array();
+            $tieneDatos = false;
+            oci_execute($cursor); // Execute the cursor
+            
+            while ($entry = oci_fetch_assoc($cursor)) {
+                $tieneDatos = true;
+                array_push($result, $entry);
+            }
+            
+            if (!$tieneDatos){ $result = false; }
+        }else{
+            $result = false;
+        }
+        
+        
+        return array("coderror"  => $coderror, 
+                     "descerror" => $descerror,
+                     "cursor"    => $result);
     }
 }
