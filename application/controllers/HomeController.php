@@ -103,7 +103,6 @@ class HomeController extends CI_Controller {
     function logout() {
         if ($this->session->userdata('logged_in')) {
             $this->session->unset_userdata('logged_in');
-            $this->session->unset_userdata('logged_remember');
         }
         
         redirect('HomeController', 'refresh');

@@ -219,7 +219,7 @@
                             dataType: "json",
                             success: function (data) {
                                 if (data['STATUS'] == "TRUE") {
-                                        //window.location.href = 'HomeController';
+                                        window.location.href = 'HomeController';
                                     }
                                 else{
                                     $.smallBox({
