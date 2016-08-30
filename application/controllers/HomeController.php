@@ -26,9 +26,7 @@ class HomeController extends CI_Controller {
                 $usuario = $userdata['usuario'];
                 
                 if ($remember == 'on'){
-                    //echo "remember";
-                    //redirect('LockController', 'refresh');
-                    redirect('HomeController', 'refresh');
+                    redirect('LockController', 'refresh');
                 }
                 else{
                     redirect('LoginController', 'refresh');
