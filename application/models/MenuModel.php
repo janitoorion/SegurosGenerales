@@ -1,6 +1,6 @@
 <?php
 
-class Menu extends CI_Model {
+class MenuModel extends CI_Model {
     function __construct() {
         parent::__construct();
     }
@@ -31,7 +31,7 @@ class Menu extends CI_Model {
                 array_push($result, $entry);
             }
         }else{
-            $result = false;
+            $result = null;
         }
 
         return $result;

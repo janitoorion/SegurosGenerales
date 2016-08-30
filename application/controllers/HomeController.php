@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class HomeController extends CI_Controller {
     
     public function __construct() {
 		parent::__construct();
-        $this->load->model('Menu');
+        $this->load->model('MenuModel');
 	}
     
 	public function index()	{
@@ -24,16 +24,16 @@ class Home extends CI_Controller {
                 $usuario = $userdata['usuario'];
                 
                 if ($remember == 'on'){
-                    redirect('Lock', 'refresh');
+                    redirect('LockController', 'refresh');
                 }
                 else{
-                    redirect('Login', 'refresh');
+                    redirect('LoginController', 'refresh');
                 }
             }
             else {
-                redirect('Login', 'refresh');
+                redirect('LoginController', 'refresh');
             }
-            redirect('Login', 'refresh');
+            redirect('LoginController', 'refresh');
         }
         $datos['datosUsuario'] = $this->session->userdata('logged_in');
         /* --- */
@@ -44,19 +44,19 @@ class Home extends CI_Controller {
     
     function crear_menu($codusuario) {
         $menu = "<li class=''><a href='Inicio/Index' title='Inicio'><i class='fa fa-lg fa-fw txt-color-blue fa-home'></i><span class='menu-item-parent'>Inicio</span></a></li>";
-        $menu = $menu . $this->crear_menu_nivel_1($codusuario));
+        $menu = $menu . $this->crear_menu_nivel_1($codusuario);
         return $menu;
     }
     
     function crear_menu_nivel_1($codusuario) {
         $nivel1 = "";
         
-        $padre = $this->Menus->menu_padre($codusuario);
+        $padre = $this->MenuModel->menu_padre($codusuario);
         if (!$padre) {
             return "";
         } else {
             foreach ($padre as $row) {          
-                $hijo = $this->Menus->menu_hijo($codusuario, $row->opccodigo);
+                $hijo = $this->MenuModel->menu_hijo($codusuario, $row->opccodigo);
                 $item = "";
                 if (!$hijo) {
                     if ($idioma == "es"){
@@ -85,13 +85,13 @@ class Home extends CI_Controller {
     function crear_menu_sub_niveles($codusuario, $opccodigo) {
         $masnivel = "";
         
-        $hijos = $this->Menus->menu_hijo($codusuario, $opccodigo);
+        $hijos = $this->MenuModel->menu_hijo($codusuario, $opccodigo);
         if (!$hijos) {
             return "";
         }
         else{
             foreach ($hijos as $row) {          
-                $masHijos = $this->Menus->menu_hijo($codusuario, $opccodigo);
+                $masHijos = $this->MenuModel->menu_hijo($codusuario, $opccodigo);
                 $item = "";
                 if (!$masHijos) {
                     if ($idioma == "es"){
