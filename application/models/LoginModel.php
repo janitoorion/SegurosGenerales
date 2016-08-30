@@ -23,14 +23,19 @@ class LoginModel extends CI_Model {
         $res = ociexecute($stmt);
         if ($res){
             $result = array();
+            $tieneDatos = false;
             oci_execute($cursor); // Execute the cursor
+            
             while ($entry = oci_fetch_assoc($cursor)) {
+                $tieneDatos = true;
                 array_push($result, $entry);
             }
+            
+            if (!$tieneDatos){ $result = false; }
         }else{
-            $result = null;
+            $result = false;
         }
-
+        
         
         return array("coderror"  => $coderror, 
                      "descerror" => $descerror,

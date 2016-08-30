@@ -18,55 +18,50 @@ class LoginController extends CI_Controller {
 	}
     
     public function validar_login() {
-        $username = 'admin';//$this->input->post('username');
-        $password = '123';//$this->input->post('password');
-        $remember = '';//$this->input->post('remember');
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $remember = $this->input->post('remember');
         
         $result = $this->LoginModel->busca_usuario_login($username);
 
-        if (!$result) {
-            $status = array("STATUS" => $result[0]['deserror']);
-        } else {
+        if ($result['coderror'] <> "0"){
+            $status = array("STATUS" => $result['descerror']);
+        }
+        else{
             $usuario = array();
-            foreach ($result[0]['cursor'] as $row){
-                echo $row->usupassword;
-            }
-            /*
-            foreach ($result as $row) {
-                $des_password_db = $this->desencriptar($row->password);
-
+            $data = $result['cursor'];
+            $status = '';
+            foreach ($data as $row) {
+                $des_password_db = $this->desencriptar($row['USUPASSWORD']);
                 if (strcmp($des_password_db, $password) == 0) {
+                    
                     $status = array("STATUS" => "TRUE");
-                    $user = array('id' => $row->id,
-                        'nombre' => $row->nombre,
-                        'usuario' => $row->usuario,
-                        'perfil' => $row->id_perfil,
-                        'id_sistema' => $row->id_sistema,
-                        'rut_empresa' => $row->rut_empresa,
-                        'nombre_empresa' => $row->nombre_empresa
+                    $user = array('id' => $row['USUCODIGO'],
+                                  'nombre' => $row['USUNOMBRE'],
+                                  'usuario' => $row['USUNOMUSU']
                     );
 
                     $this->session->set_userdata('logged_in', $user);
                     
                     if ($remember == 'on'){
                         $recuerdame = array('remember' => $remember,
-                                            'usuario' => $row->usuario,
-                                            'nombre' => $row->nombre,
-                                            'id_sistema' => $row->id_sistema);
+                                            'usuario' => $row['USUNOMUSU'],
+                                            'nombre' => $row['USUNOMBRE']);
                         $this->session->set_userdata('logged_remember', $recuerdame);
                     }
                     else{
                         if ($this->session->userdata('logged_remember')) {
                             $this->session->unset_userdata('logged_remember');
                         }
-                    }
-                    
-                } else {
-                    $status = array("STATUS" => $this->lang->line('datosNoValidos', FALSE));
+                    }  
                 }
-            }*/
+                else{
+                    $status = array("STATUS" => 'Los datos no son válidos');
+                }
+            }
         }
-        //echo json_encode($status);
+            
+        echo json_encode($status);
     }
         
     function encriptar($msg) {

@@ -9,12 +9,14 @@ class HomeController extends CI_Controller {
 	}
     
 	public function index()	{
-        /* LOGIN */
+        $id = "";
+        $nombre = "";
+        $usuario = "";
+
         if ($this->session->userdata('logged_in')) {
             $userdata = $this->session->userdata('logged_in');
-            $id = $userdata['codusuario'];
+            $id = $userdata['id'];
             $nombre = $userdata['nombre'];
-            $perfil = $userdata['perfil'];
             $usuario = $userdata['usuario'];
         }
         else {
@@ -38,7 +40,7 @@ class HomeController extends CI_Controller {
         $datos['datosUsuario'] = $this->session->userdata('logged_in');
         /* --- */
                   
-        $datos['menuUsuario'] = $this->crear_menu((int)$codusuario);
+        $datos['menuUsuario'] = "";//$this->crear_menu((int)$id);
         $this->load->view('v_home', $datos);
 	}
     
