@@ -29,36 +29,36 @@ class LoginController extends CI_Controller {
         }
         else{
             $usuario = array();
-            $data = $result['cursor'];
             $status = '';
-            foreach ($data as $row) {
-                $des_password_db = $this->desencriptar($row['USUPASSWORD']);
-                if (strcmp($des_password_db, $password) == 0) {
-                    
-                    $status = array("STATUS" => "TRUE");
-                    $user = array('id' => $row['USUCODIGO'],
-                                  'nombre' => $row['USUNOMBRE'],
-                                  'usuario' => $row['USUNOMUSU']
-                    );
 
-                    $this->session->set_userdata('logged_in', $user);
-                    
-                    if ($remember == 'on'){
-                        $recuerdame = array('remember' => $remember,
-                                            'usuario' => $row['USUNOMUSU'],
-                                            'nombre' => $row['USUNOMBRE']);
-                        $this->session->set_userdata('logged_remember', $recuerdame);
-                    }
-                    else{
-                        if ($this->session->userdata('logged_remember')) {
-                            $this->session->unset_userdata('logged_remember');
-                        }
-                    }  
+            $des_password_db = $this->desencriptar($result['usupassword']);
+            if (strcmp($des_password_db, $password) == 0) {
+                
+                $status = array("STATUS" => "TRUE");
+                $user = array('id'      => $result['usucodigo'],
+                              'nombre'  => $result['usunombre'],
+                              'usuario' => $result['usunomusu']
+                );
+
+                $this->session->set_userdata('logged_in', $user);
+                
+                if ($remember == 'on'){
+                    $recuerdame = array('remember' => $remember,
+                                        'usuario'   => $result['usunomusu'],
+                                        'nombre'    => $result['usunombre']);
+                                        
+                    $this->session->set_userdata('logged_remember', $recuerdame);
                 }
                 else{
-                    $status = array("STATUS" => 'Los datos no son válidos');
-                }
+                    if ($this->session->userdata('logged_remember')) {
+                        $this->session->unset_userdata('logged_remember');
+                    }
+                }  
             }
+            else{
+                $status = array("STATUS" => 'Los datos no son válidos');
+            }
+            
         }
             
         echo json_encode($status);
