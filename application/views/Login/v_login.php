@@ -111,9 +111,7 @@
 								<header>
 									Login
 								</header>
-
 								<fieldset>
-									
 									<section>
 										<label class="label">Usuario</label>
 										<label class="input"> <i class="icon-append fa fa-user"></i>
