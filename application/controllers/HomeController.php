@@ -39,7 +39,7 @@ class HomeController extends CI_Controller {
         }
         $datos['datosUsuario'] = $this->session->userdata('logged_in');
         $datos['menuUsuario'] = $this->crear_menu((int)$id);
-        $this->load->view('v_home', $datos);
+        $this->load->view('Home/v_home', $datos);
 	}
     
     public function crear_menu($codusuario) {
