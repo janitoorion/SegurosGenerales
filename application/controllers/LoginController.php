@@ -14,7 +14,7 @@ class LoginController extends CI_Controller {
             $this->session->unset_userdata('logged_remember');
         }
              
-        $this->load->view('v_login');
+        $this->load->view('Login/v_login');
 	}
     
     public function validar_login() {

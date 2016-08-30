@@ -26,7 +26,9 @@ class HomeController extends CI_Controller {
                 $usuario = $userdata['usuario'];
                 
                 if ($remember == 'on'){
-                    redirect('LockController', 'refresh');
+                    //echo "remember";
+                    //redirect('LockController', 'refresh');
+                    redirect('HomeController', 'refresh');
                 }
                 else{
                     redirect('LoginController', 'refresh');
@@ -120,9 +122,10 @@ class HomeController extends CI_Controller {
     function logout() {
         if ($this->session->userdata('logged_in')) {
             $this->session->unset_userdata('logged_in');
+            $this->session->unset_userdata('logged_remember');
         }
         
-        redirect('Home', 'refresh');
+        redirect('HomeController', 'refresh');
     }
     
 }

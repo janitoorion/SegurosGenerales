@@ -212,14 +212,14 @@
 						error.insertAfter(element.parent());
 					},
                     submitHandler: function(form) {
-                        $.ajax({
+                    	$.ajax({
                             url: form.action,
                             type: form.method,
                             data: $(form).serialize(),
                             dataType: "json",
                             success: function (data) {
                                 if (data['STATUS'] == "TRUE") {
-                                        window.location.href = 'Home';
+                                        window.location.href = 'HomeController';
                                     }
                                 else{
                                     $.smallBox({
@@ -245,6 +245,7 @@
                     
 				});
 			};
+			loadScript("assets/js/plugin/bootstrap-progressbar/bootstrap-progressbar.min.js", pagefunction);
 		</script>
 
 	</body>
