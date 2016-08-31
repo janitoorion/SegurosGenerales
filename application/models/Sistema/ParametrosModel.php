@@ -1,6 +1,6 @@
 <?php
 
-class Parametros extends CI_Model {
+class ParametrosModel extends CI_Model {
     function __construct() {
         parent::__construct();
     }
@@ -11,7 +11,7 @@ class Parametros extends CI_Model {
         $descerror = "";
         $sql = "";
 
-        $sql = $sql . "begin PKG_SISTEMA.pr_recupera_usuario(:o_cursor, :o_coderror, :o_descerror); end;";
+        $sql = $sql . "begin PKG_SISTEMA.pr_lista_parametros_sis(:o_cursor, :o_coderror, :o_descerror); end;";
         
         $stmt = oci_parse($this->db->conn_id, $sql);
         oci_bind_by_name($stmt, ":o_cursor", $cursor, null, OCI_B_CURSOR);
@@ -42,8 +42,8 @@ class Parametros extends CI_Model {
         
         $titulo = '<thead>
             <tr>
-                <th data-hide="phone">Cod. Parámetro</th>
-                <th data-class="expand">Nombre</th>
+                <th data-class="expand">Cod. Parámetro</th>
+                <th data-hide="phone">Nombre</th>
                 <th data-hide="phone">Descripción</th>
                 <th data-hide="phone">Tipo</th>
                 <th data-hide="phone">Número</th>
@@ -65,7 +65,7 @@ class Parametros extends CI_Model {
                 $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pascodigo"] . '</td>';
                 $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["pasnombre"] . '</td>';
                 $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["pasdescripcion"] . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["pastippar"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["desctippar"] . '</td>';
                 $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pasvalornum"] . '</td>';
                 $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pasvalortex"] . '</td>';
                 $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pasvalorfec"] . '</td>';
