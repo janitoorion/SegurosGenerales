@@ -29,7 +29,7 @@ class Parametros extends CI_Model {
 	}
     
     function grilla($estado, $empresa, $editar, $eliminar) {
-        $result = $this->lista_clientes($estado, $empresa);
+        $result = $this->lista($estado, $empresa);
         
         $titulo = '<thead>
             <tr>
