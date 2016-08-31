@@ -77,6 +77,9 @@ specific styles this will also ensure you retrain your customization with each S
 
           <div class="input-group col-md-12">
             <input class="form-control" type="text" name="username" id="username" value="" placeholder="Usuario" style="margin-top:5px">
+          </div>
+
+          <div class="input-group col-md-12">
             <input class="form-control" type="password" name="password" id="password" placeholder="Contraseña" type="submit" style="margin-top:5px">
           </div>
 
@@ -149,6 +152,11 @@ specific styles this will also ensure you retrain your customization with each S
       // Validation
       $("#lock-form").validate({
         rules: {
+          username: {
+            required: true,
+            minlength: 3,
+            maxlength: 20
+          },
           password: {
             required: true,
             minlength: 3,
@@ -156,6 +164,9 @@ specific styles this will also ensure you retrain your customization with each S
           }
         },
         messages: {
+          username: {
+            required: 'Ingrese Usuario'
+          },
           password: {
             required: 'Ingrese Contraseña'
           }
