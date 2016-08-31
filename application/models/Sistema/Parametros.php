@@ -4,30 +4,39 @@ class Parametros extends CI_Model {
     function __construct() {
         parent::__construct();
     }
-        
-    public function lista_clientes($estado, $empresa){
-        $query = $this->db->query("SELECT cli.rut, cli.nombre, cli.contacto, cli.email, cli.telefono, 
-                                          cli.movil, cli.direccion, reg.str_descripcion region, 
-                                          pro.str_descripcion provincia, com.str_descripcion comuna, 
-                                          cli.codigo_postal, cli.estado 
-                                     FROM fact_clientes cli
-									 LEFT OUTER JOIN glob_regiones reg ON cli.region = reg.id_re
-                                     LEFT OUTER JOIN glob_provincias pro ON cli.provincia = pro.id_pr
-                                     LEFT OUTER JOIN glob_comunas com ON cli.comuna = com.id_co
-                                     , glob_empresas emp
-                                    WHERE cli.estado in (" . $estado . ")
-                                      AND emp.rut = cli.rut_empresa
-                                      AND emp.rut = '" . $empresa . "'
-                                      AND emp.estado = 1
-                                    ORDER BY cli.nombre ASC");
-        
-        if ($query->num_rows() > 0) {
-            return $query->result();
-        } else {
-            return FALSE;
-        }
-	}
     
+    function lista(){
+        $cursor = oci_new_cursor($this->db->conn_id);    
+        $coderror = 0;
+        $descerror = "";
+        $sql = "";
+
+        $sql = $sql . "begin PKG_SISTEMA.pr_recupera_usuario(:o_cursor, :o_coderror, :o_descerror); end;";
+        
+        $stmt = oci_parse($this->db->conn_id, $sql);
+        oci_bind_by_name($stmt, ":o_cursor", $cursor, null, OCI_B_CURSOR);
+        oci_bind_by_name($stmt, ":o_coderror", $coderror, 2000);
+        oci_bind_by_name($stmt, ":o_descerror", $descerror, 2000);
+
+        $res = ociexecute($stmt);
+        if ($res){
+            $result = array();
+            $tieneDatos = false;
+            oci_execute($cursor); // Execute the cursor
+            
+            while ($entry = oci_fetch_assoc($cursor)) {
+                $tieneDatos = true;
+                array_push($result, $entry);
+            }
+            
+            if (!$tieneDatos){ $result = false; }
+        }else{
+            $result = false;
+        }
+        
+        return $result;
+    }
+
     function grilla($estado, $empresa, $editar, $eliminar) {
         $result = $this->lista($estado, $empresa);
         
@@ -46,12 +55,6 @@ class Parametros extends CI_Model {
         $cuerpo = '<tbody>';
         if (!$result) {
             $cuerpo = $cuerpo . '<tr>
-                                     <td></td>
-                                     <td></td>
-                                     <td></td>
-                                     <td></td>
-                                     <td></td>
-                                     <td></td>
                                      <td></td>
                                      <td></td>
                                      <td></td>
