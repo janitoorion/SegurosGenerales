@@ -78,7 +78,6 @@ class MenuModel extends CI_Model {
             $result = false;
         }
         
-        
         return array("coderror"  => $coderror, 
                      "descerror" => $descerror,
                      "cursor"    => $result);

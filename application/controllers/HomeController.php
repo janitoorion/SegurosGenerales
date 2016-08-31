@@ -50,12 +50,12 @@ class HomeController extends CI_Controller {
     
     function crear_menu_nivel_1($codusuario) {
         $nivel1 = "";
-        $padre = $this->MenuModel->menu_padre($codusuario)["cursor"];
+        $padre = $this->MenuModel->menu_padre((int)$codusuario)["cursor"];
         if (!$padre) {
             return "";
         } else {
             foreach ($padre as $row) {  
-                $hijo = $this->MenuModel->menu_hijo($codusuario, $row['OPCCODIGO'])['cursor'];
+                $hijo = $this->MenuModel->menu_hijo((int)$codusuario, (int)$row['OPCCODIGO'])['cursor'];
                 $item = "";
                 if (!$hijo) {
                     $item = $item . "<li><a href='" . $row['OPCURL'] . "'>" . $row['OPCICONO'] . $row['TEXCODIGO'] . "</a></li>";
@@ -63,7 +63,7 @@ class HomeController extends CI_Controller {
                     $item = $item . "<li class='class='top-menu-invisible'>";
                     $item = $item . "<a href='#'>" . $row['OPCICONO'] . "<span class='menu-item-parent'>" . $row['TEXCODIGO'] . "</span></a>";
                     $item = $item . "<ul>";
-                    $item = $item . $this->crear_menu_sub_niveles($codusuario, $row['OPCCODIGO']);
+                    $item = $item . $this->crear_menu_sub_niveles((int)$codusuario, (int)$row['OPCCODIGO']);
                     $item = $item . "</ul>";
                     $item = $item . "</li>";
                 }
@@ -76,13 +76,13 @@ class HomeController extends CI_Controller {
     
     function crear_menu_sub_niveles($codusuario, $opccodigo) {
         $masnivel = "";
-        $hijos = $this->MenuModel->menu_hijo($codusuario, $opccodigo)['cursor'];
+        $hijos = $this->MenuModel->menu_hijo((int)$codusuario, (int)$opccodigo)['cursor'];
         if (!$hijos) {
             return "";
         }
         else{
             foreach ($hijos as $row) {          
-                $masHijos = $this->MenuModel->menu_hijo($codusuario, $opccodigo)['cursor'];
+                $masHijos = $this->MenuModel->menu_hijo((int)$codusuario, (int)$row['OPCCODIGO'])['cursor'];
                 $item = "";
                 if (!$masHijos) {
                     $item = $item . "<li><a href='" . $row['OPCURL'] . "'>" . $row['OPCICONO'] . $row['TEXCODIGO'] . "</a></li>";
@@ -90,7 +90,7 @@ class HomeController extends CI_Controller {
                     $item = $item . "<li>";
                     $item = $item . "<a href='#'>" . $row['OPCICONO'] . $row['TEXCODIGO'] . "</a>";
                     $item = $item . "<ul>";
-                    $item = $item . $this->crear_menu_sub_niveles($codusuario, $row['OPCCODIGO']);
+                    $item = $item . $this->crear_menu_sub_niveles((int)$codusuario, (int)$row['OPCCODIGO']);
                     $item = $item . "</ul>";
                     $item = $item . "</li>";
                 }
