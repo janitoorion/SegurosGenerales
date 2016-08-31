@@ -13,7 +13,8 @@ class ParametrosController extends CI_Controller {
 	}
     
 	public function index()	{
-        $datos['grilla'] = "";
+        $datos['grilla'] = $this->ParametrosModel->grilla(true, true);
+        
         $this->load->view('ajax/sistema/parametros/v_parametros', $datos);
 	}
     

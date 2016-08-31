@@ -58,17 +58,17 @@ class ParametrosModel extends CI_Model {
             
         } else {
             foreach ($result as $row) {
-                if ($editar) { $editar = '<a href="Clientes/Clientes/EditarCliente/' . $row["pascodigo"] . '" data-backdrop="static" data-toggle="modal" data-target="#remoteModal" class="btn btn-primary btn-xs">Editar</a>'; }
-                if ($eliminar) { $eliminar = '<a href="Clientes/Clientes/EliminarCliente/' . $row["pascodigo"] . '" class="btn btn-danger btn-xs btnEliminar">Eliminar</a>'; }
+                if ($editar) { $editar = '<a href="Clientes/Clientes/EditarCliente/' . $row["PASCODIGO"] . '" data-backdrop="static" data-toggle="modal" data-target="#remoteModal" class="btn btn-primary btn-xs">Editar</a>'; }
+                if ($eliminar) { $eliminar = '<a href="Clientes/Clientes/EliminarCliente/' . $row["PASCODIGO"] . '" class="btn btn-danger btn-xs btnEliminar">Eliminar</a>'; }
                 
                 $cuerpo = $cuerpo . '<tr>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pascodigo"] . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["pasnombre"] . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["pasdescripcion"] . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["desctippar"] . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pasvalornum"] . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pasvalortex"] . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pasvalorfec"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["PASCODIGO"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["PASNOMBRE"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["PASDESCRIPCION"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["DESCTIPPAR"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["PASVALORNUM"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["PASVALORTEX"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["PASVALORFEC"] . '</td>';
 
                 if ($editar||$eliminar) { 
                     $cuerpo = $cuerpo . '<td style="text-align:center;">' . $editar . ' ' . $eliminar . '</td>';   

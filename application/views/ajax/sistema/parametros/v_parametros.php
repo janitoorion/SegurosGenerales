@@ -2,7 +2,7 @@
 <section id="widget-grid" class="">
 	<div class="row">
 		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-sortable="false" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-togglebutton="false" data-widget-fullscreenbutton="false" data-widget-sortable="false" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
 				<!-- widget options:
 				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
@@ -16,8 +16,21 @@
 				data-widget-sortable="false"
 				-->
 				<header>
-					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<span class="widget-icon"> <i class="fa fa-table"></i></span>
 					<h2>Parámetros</h2>
+
+                    <div class="widget-toolbar">
+						
+						<div class="btn-group">
+							<button class="btn btn-default btn-xs" id="btnAgregar">
+								<i class="fa fa-plus"></i> <span class="hidden-mobile">Agregar</span>
+							</button>
+                            <button class="btn btn-default btn-xs" id="btnExportar">
+								<i class="fa fa-table"></i> <span class="hidden-mobile">Excel</span>
+							</button>
+						</div>
+					</div>
+
 				</header>
 				<div>
 					<div class="jarviswidget-editbox">
@@ -25,114 +38,7 @@
 					</div>
 					<div class="widget-body no-padding">
 						<table id="datatable_tabletools" class="table table-striped table-bordered table-hover" width="100%">
-							<thead>
-								<tr>
-									<th data-hide="phone">Cod. Parámetro</th>
-									<th data-class="expand">Descripción</th>
-									<th data-hide="phone">Tipo</th>
-									<th data-hide="phone">Número</th>
-									<th data-hide="phone,tablet">Texto</th>
-									<th data-hide="phone,tablet">Fecha</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Jennifer</td>
-									<td>Et Rutrum Non Associates</td>
-									<td>35728</td>
-									<td>Fogo</td>
-									<td>03/04/14</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Clark</td>
-									<td>Nam Ac Inc.</td>
-									<td>7162</td>
-									<td>Machelen</td>
-									<td>03/23/13</td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>Brendan</td>
-									<td>Enim Commodo Limited</td>
-									<td>98611</td>
-									<td>Norman</td>
-									<td>02/13/14</td>
-								</tr>
-                                <tr>
-									<td>1</td>
-									<td>Jennifer</td>
-									<td>Et Rutrum Non Associates</td>
-									<td>35728</td>
-									<td>Fogo</td>
-									<td>03/04/14</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Clark</td>
-									<td>Nam Ac Inc.</td>
-									<td>7162</td>
-									<td>Machelen</td>
-									<td>03/23/13</td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>Brendan</td>
-									<td>Enim Commodo Limited</td>
-									<td>98611</td>
-									<td>Norman</td>
-									<td>02/13/14</td>
-								</tr>
-                                <tr>
-									<td>1</td>
-									<td>Jennifer</td>
-									<td>Et Rutrum Non Associates</td>
-									<td>35728</td>
-									<td>Fogo</td>
-									<td>03/04/14</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Clark</td>
-									<td>Nam Ac Inc.</td>
-									<td>7162</td>
-									<td>Machelen</td>
-									<td>03/23/13</td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>Brendan</td>
-									<td>Enim Commodo Limited</td>
-									<td>98611</td>
-									<td>Norman</td>
-									<td>02/13/14</td>
-								</tr>
-                                <tr>
-									<td>1</td>
-									<td>Jennifer</td>
-									<td>Et Rutrum Non Associates</td>
-									<td>35728</td>
-									<td>Fogo</td>
-									<td>03/04/14</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Clark</td>
-									<td>Nam Ac Inc.</td>
-									<td>7162</td>
-									<td>Machelen</td>
-									<td>03/23/13</td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>Brendan</td>
-									<td>Enim Commodo Limited</td>
-									<td>98611</td>
-									<td>Norman</td>
-									<td>02/13/14</td>
-								</tr>
-							</tbody>
+							<?= $grilla; ?>
 						</table>
 					</div>
 				</div>
@@ -166,24 +72,11 @@
                     "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>',
                     "sUrl": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
                 },
+                
                 "oTableTools": {
-                    "aButtons": [
-                    "copy",
-                    "csv",
-                    "xls",
-                        {
-                            "sExtends": "pdf",
-                            "sTitle": "SmartAdmin_PDF",
-                            "sPdfMessage": "SmartAdmin PDF Export",
-                            "sPdfSize": "letter"
-                        },
-                        {
-                            "sExtends": "print",
-                            "sMessage": "Generated by SmartAdmin <i>(press Esc to close)</i>"
-                        }
-                    ],
-                    "sSwfPath": "assets/js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
+                    "aButtons": []
                 },
+                
                 "autoWidth" : true,
                 "preDrawCallback" : function() {
                     // Initialize the responsive datatables helper once.
