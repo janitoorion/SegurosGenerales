@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">	
+<html lang="en-us" class="smart-style-2">	
 	<head>
 		<meta charset="utf-8">
 		<title> Seguros Generales </title>
@@ -12,7 +12,8 @@
 		<!-- Basic Styles -->
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url() ?>assets/css/font-awesome.min.css">
-
+		<!-- Custom CSS RFA -->
+		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url() ?>assets/css/custom.css">
 		<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url() ?>assets/css/smartadmin-production-plugins.min.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url() ?>assets/css/smartadmin-production.min.css">
@@ -31,6 +32,8 @@
 
 		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url() ?>assets/css/demo.min.css">
+
+		
 
 		<!-- #FAVICONS -->
 		<link rel="shortcut icon" href="<?php echo base_url() ?>assets/img/favicon/favicon.ico" type="image/x-icon">
@@ -55,7 +58,8 @@
 		<link rel="apple-touch-startup-image" href="<?php echo base_url() ?>assets/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
 		<link rel="apple-touch-startup-image" href="<?php echo base_url() ?>assets/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
 		<link rel="apple-touch-startup-image" href="<?php echo base_url() ?>assets/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-
+		<style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style>
+		
 	</head>
 
 	<!--
@@ -101,14 +105,14 @@
 		* 'fixed-page-footer' - Fixes footer
 		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 	-->
-	<body class="desktop-detected menu-on-top fixed-header fixed-navigation fixed-ribbon smart-style-0">
+	<body class="desktop-detected menu-on-top fixed-header fixed-navigation fixed-ribbon smart-style-2">
 
 		<!-- #HEADER -->
 		<header id="header">
 			<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
-				<span id="logo"> <img src="<?php echo base_url() ?>assets/img/logo.png" alt="SmartAdmin"> </span>
+				<span id="logo"> <img src="<?php echo base_url() ?>assets/img/logo-blue.png" alt="SmartAdmin"> </span>
 				<!-- END LOGO PLACEHOLDER -->
 
 				<!-- Note: The activity badge color changes when clicked and resets the number to 0
@@ -554,8 +558,8 @@
 			<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
 		<![endif]-->
 
-		<!-- Demo purpose only -->
-		<!--<script src="<?php echo base_url() ?>assets/js/demo.min.js"></script>-->
+		<!-- Demo purpose only 
+		<script src="<?php echo base_url() ?>assets/js/demo.min.js"></script>-->
 
 		<!-- MAIN APP JS FILE -->
 		<script src="<?php echo base_url() ?>assets/js/app.min.js"></script>
