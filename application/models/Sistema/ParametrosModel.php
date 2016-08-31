@@ -59,8 +59,12 @@ class ParametrosModel extends CI_Model {
         } else {
             foreach ($result as $row) {
                 if ($editar) { $editar = '<a href="Clientes/Clientes/EditarCliente/' . $row["PASCODIGO"] . '" data-backdrop="static" data-toggle="modal" data-target="#remoteModal" class="btn btn-primary btn-xs">Editar</a>'; }
-                if ($eliminar) { $eliminar = '<a href="Clientes/Clientes/EliminarCliente/' . $row["PASCODIGO"] . '" class="btn btn-danger btn-xs btnEliminar">Eliminar</a>'; }
-                
+                if ($eliminar) { 
+                    if ($row["PASELIMINABLE"] == "0") {  
+                        $eliminar = '<a href="Clientes/Clientes/EliminarCliente/' . $row["PASCODIGO"] . '" class="btn btn-danger btn-xs btnEliminar">Eliminar</a>';
+                    }else{ $eliminar = ""; }
+                }
+
                 $cuerpo = $cuerpo . '<tr>';
                 $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["PASCODIGO"] . '</td>';
                 $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["PASNOMBRE"] . '</td>';
