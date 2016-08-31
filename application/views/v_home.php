@@ -2,7 +2,7 @@
 <html lang="en-us">	
 	<head>
 		<meta charset="utf-8">
-		<title> SmartAdmin (AJAX)</title>
+		<title> Seguros Generales </title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 		
@@ -101,7 +101,7 @@
 		* 'fixed-page-footer' - Fixes footer
 		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 	-->
-	<body class="smart-style-0 desktop-detected menu-on-top fixed-header fixed-navigation">
+	<body class="desktop-detected menu-on-top fixed-header fixed-navigation fixed-ribbon smart-style-0">
 
 		<!-- #HEADER -->
 		<header id="header">
