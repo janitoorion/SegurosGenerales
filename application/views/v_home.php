@@ -201,7 +201,7 @@
 				<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
 					<li class="">
 						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
-							<img src="<?php echo base_url() ?>assets/img/avatars/sunny.png" alt="John Doe" class="online" />  
+							<img src="<?php echo base_url() ?>assets/img/avatars/male.png" alt="John Doe" class="online" />  
 						</a>
 						<ul class="dropdown-menu pull-right">
 							<li>
@@ -239,86 +239,11 @@
 				</div>
 				<!-- end search mobile button -->
 				
-				<!-- #SEARCH -->
-				<!-- input: search field -->
-				<form action="#ajax/search.html" class="header-search pull-right">
-					<input id="search-fld" type="text" name="param" placeholder="Find reports and more">
-					<button type="submit">
-						<i class="fa fa-search"></i>
-					</button>
-					<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
-				</form>
-				<!-- end input: search field -->
-
 				<!-- fullscreen button -->
 				<div id="fullscreen" class="btn-header transparent pull-right">
 					<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
 				</div>
 				<!-- end fullscreen button -->
-
-				<!-- #Voice Command: Start Speech -->
-				<!-- NOTE: Voice command button will only show in browsers that support it. Currently it is hidden under mobile browsers. 
-						   You can take off the "hidden-sm" and "hidden-xs" class to display inside mobile browser-->
-				<div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
-					<div> 
-						<a href="javascript:void(0)" title="Voice Command" data-action="voiceCommand"><i class="fa fa-microphone"></i></a> 
-						<div class="popover bottom"><div class="arrow"></div>
-							<div class="popover-content">
-								<h4 class="vc-title">Voice command activated <br><small>Please speak clearly into the mic</small></h4>
-								<h4 class="vc-title-error text-center">
-									<i class="fa fa-microphone-slash"></i> Voice command failed
-									<br><small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
-									<br><small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
-								</h4>
-								<a href="javascript:void(0);" class="btn btn-success" onclick="commands.help()">See Commands</a> 
-								<a href="javascript:void(0);" class="btn bg-color-purple txt-color-white" onclick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a> 
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- end voice command -->
-
-				<!-- multiple lang dropdown : find all flags in the flags page -->
-				<ul class="header-dropdown-list hidden-xs">
-					<li>
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-us" alt="United States"> <span> US</span> <i class="fa fa-angle-down"></i> </a>
-						<ul class="dropdown-menu pull-right">
-							<li class="active">
-								<a href="javascript:void(0);"><img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-us" alt="United States"> English (US)</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);"><img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-fr" alt="France"> Français</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);"><img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-es" alt="Spanish"> Español</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);"><img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-de" alt="German"> Deutsch</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);"><img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-jp" alt="Japan"> 日本語</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);"><img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-cn" alt="China"> 中文</a>
-							</li>	
-							<li>
-								<a href="javascript:void(0);"><img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-it" alt="Italy"> Italiano</a>
-							</li>	
-							<li>
-								<a href="javascript:void(0);"><img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-pt" alt="Portugal"> Portugal</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);"><img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-ru" alt="Russia"> Русский язык</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);"><img src="<?php echo base_url() ?>assets/img/blank.gif" class="flag flag-kr" alt="Korea"> 한국어</a>
-							</li>						
-							
-						</ul>
-					</li>
-				</ul>
-				<!-- end multiple lang -->
-
 			</div>
 			<!-- end pulled right: nav area -->
 
@@ -335,7 +260,7 @@
 				<span> <!-- User image size is adjusted inside CSS, it should stay as is --> 
 					
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-						<img src="<?php echo base_url() ?>assets/img/avatars/sunny.png" alt="me" class="online" /> 
+						<img src="<?php echo base_url() ?>assets/img/avatars/male.png" alt="me" class="online" /> 
 						<span>
 							john.doe 
 						</span>
@@ -412,52 +337,13 @@
 		<div class="page-footer">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6">
-					<span class="txt-color-white">SmartAdmin 1.8.2 <span class="hidden-xs"> - Web Application Framework</span> © 2014-2016</span>
+					<span class="txt-color-white"><!-- SmartAdmin 1.8.2 <span class="hidden-xs"> - Web Application Framework</span> © 2014-2016 --> </span>
 				</div>
 
 				<div class="col-xs-6 col-sm-6 text-right hidden-xs">
 					<div class="txt-color-white inline-block">
-						<i class="txt-color-blueLight hidden-mobile">Last account activity <i class="fa fa-clock-o"></i> <strong>52 mins ago &nbsp;</strong> </i>
-						<div class="btn-group dropup">
-							<button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
-								<i class="fa fa-link"></i> <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu pull-right text-left">
-								<li>
-									<div class="padding-5">
-										<p class="txt-color-darken font-sm no-margin">Download Progress</p>
-										<div class="progress progress-micro no-margin">
-											<div class="progress-bar progress-bar-success" style="width: 50%;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="padding-5">
-										<p class="txt-color-darken font-sm no-margin">Server Load</p>
-										<div class="progress progress-micro no-margin">
-											<div class="progress-bar progress-bar-success" style="width: 20%;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li >
-									<div class="padding-5">
-										<p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
-										<div class="progress progress-micro no-margin">
-											<div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="padding-5">
-										<button class="btn btn-block btn-default">refresh</button>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<!-- end btn-group-->
+						<i class="txt-color-blueLight hidden-mobile"><!--Last account activity <i class="fa fa-clock-o"></i> <strong>52 mins ago &nbsp;</strong>--> </i>
+						
 					</div>
 					<!-- end div-->
 				</div>
