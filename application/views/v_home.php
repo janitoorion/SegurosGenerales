@@ -574,8 +574,14 @@
 
 		<!-- Your GOOGLE ANALYTICS CODE Below -->
 		<script type="text/javascript">
+			
+			runAllForms();
+			pageSetUp();
+
+			var pagefunction = function() {
+			}
+			loadScript("assets/js/plugin/bootstrap-progressbar/bootstrap-progressbar.min.js", pagefunction);
 		
-		 
 		</script>
 
 	</body>
