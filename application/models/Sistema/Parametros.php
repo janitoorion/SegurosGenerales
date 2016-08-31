@@ -37,13 +37,14 @@ class Parametros extends CI_Model {
         return $result;
     }
 
-    function grilla($estado, $empresa, $editar, $eliminar) {
-        $result = $this->lista($estado, $empresa);
+    function grilla($editar, $eliminar) {
+        $result = $this->lista();
         
         $titulo = '<thead>
             <tr>
                 <th data-hide="phone">Cod. Parámetro</th>
-                <th data-class="expand">Descripción</th>
+                <th data-class="expand">Nombre</th>
+                <th data-hide="phone">Descripción</th>
                 <th data-hide="phone">Tipo</th>
                 <th data-hide="phone">Número</th>
                 <th data-hide="phone,tablet">Texto</th>
@@ -54,35 +55,21 @@ class Parametros extends CI_Model {
         
         $cuerpo = '<tbody>';
         if (!$result) {
-            $cuerpo = $cuerpo . '<tr>
-                                     <td></td>
-                                     <td></td>
-                                     <td></td>
-                                     <td></td>
-                                     <td></td>
-                                     <td></td>';
-                                     if ($editar or $eliminar) { $cuerpo = $cuerpo . '<td></td>'; }                          
-            $cuerpo = $cuerpo . '</tr>';
+            
         } else {
             foreach ($result as $row) {
-                if ($editar) { $editar = '<a href="Clientes/Clientes/EditarCliente/' . $row->rut . '" data-backdrop="static" data-toggle="modal" data-target="#remoteModal" class="btn btn-primary btn-xs">Editar</a>'; }
-                if ($eliminar) { $eliminar = '<a href="Clientes/Clientes/EliminarCliente/' . $row->rut . '" class="btn btn-danger btn-xs btnEliminar">Eliminar</a>'; }
+                if ($editar) { $editar = '<a href="Clientes/Clientes/EditarCliente/' . $row["pascodigo"] . '" data-backdrop="static" data-toggle="modal" data-target="#remoteModal" class="btn btn-primary btn-xs">Editar</a>'; }
+                if ($eliminar) { $eliminar = '<a href="Clientes/Clientes/EliminarCliente/' . $row["pascodigo"] . '" class="btn btn-danger btn-xs btnEliminar">Eliminar</a>'; }
                 
-                if ($row->estado == 1){ $estado = 'Activo'; }
-                else { $estado = 'Inactivo'; }
                 $cuerpo = $cuerpo . '<tr>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">' . $row->rut . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">' . $row->nombre . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:left;">' . $row->contacto . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">' . $row->email . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">' . $row->telefono . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">' . $row->movil . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">' . $row->direccion . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">' . $row->region . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:left;">' . $row->provincia . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">' . $row->comuna . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">' . $row->codigo_postal . '</td>';
-                $cuerpo = $cuerpo . '<td style="text-align:center;">' . $estado . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pascodigo"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["pasnombre"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["pasdescripcion"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:left;">'     . $row["pastippar"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pasvalornum"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pasvalortex"] . '</td>';
+                $cuerpo = $cuerpo . '<td style="text-align:center;">'   . $row["pasvalorfec"] . '</td>';
+
                 if ($editar||$eliminar) { 
                     $cuerpo = $cuerpo . '<td style="text-align:center;">' . $editar . ' ' . $eliminar . '</td>';   
                 }
