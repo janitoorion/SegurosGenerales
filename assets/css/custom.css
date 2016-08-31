@@ -1,0 +1,41 @@
+/*Alturas minimas de contenedores */
+
+.widget-body-min-height-1 {
+    min-height: 100px;
+}
+
+.widget-body-min-height-2 {
+    min-height: 200px;
+}
+
+.widget-body-min-height-3 {
+    min-height: 300px;
+}
+
+.widget-body-min-height-4 {
+    min-height: 400px;
+}
+
+.widget-body-min-height-5 {
+    min-height: 500px;
+}
+
+.widget-body-min-height-6 {
+    min-height: 600px;
+}
+
+.widget-body-min-height-7 {
+    min-height: 700px;
+}
+
+.widget-body-min-height-8 {
+    min-height: 800px;
+}
+
+.widget-body-min-height-9 {
+    min-height: 900px;
+}
+
+.widget-body-min-height-10 {
+    min-height: 1000px;
+}
