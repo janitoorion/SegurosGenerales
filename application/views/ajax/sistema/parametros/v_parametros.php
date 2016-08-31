@@ -21,12 +21,20 @@ data-widget-sortable="false"
           <div class="widget-toolbar">
 
             <div class="btn-group">
-              <button class="btn btn-default btn-xs" id="btnAgregar">
+              <button class="btn btn-default btn-xs" id="btnAgregar" style="width:80px">
                 <i class="fa fa-plus"></i> <span class="hidden-mobile">Agregar</span>
               </button>
-              <button class="btn btn-default btn-xs" id="btnExportar" onclick="javascript: $('#datatable_tabletools').DataTable().buttons(0).trigger();">
-                <i class="fa fa-table"></i> <span class="hidden-mobile">Excel</span>
+              <button class="btn btn-default btn-xs" style="width:80px" onclick="javascript: $('#datatable_tabletools').DataTable().buttons(0).trigger();">
+                <i class="fa fa-file-excel-o"></i> <span class="hidden-mobile">Excel</span>
               </button>
+              <!--
+              <button class="btn btn-default btn-xs" style="width:80px" onclick="javascript: $('#datatable_tabletools').DataTable().buttons(1).trigger();">
+                <i class="fa fa-file-pdf-o"></i> <span class="hidden-mobile">Pdf</span>
+              </button>
+              <button class="btn btn-default btn-xs" style="width:80px" onclick="javascript: $('#datatable_tabletools').DataTable().buttons(2).trigger();">
+                <i class="fa fa-print"></i> <span class="hidden-mobile">Imprimir</span>
+              </button>
+              -->
             </div>
           </div>
 
@@ -84,7 +92,7 @@ data-widget-sortable="false"
       "oTableTools": {
         "aButtons": []
       },
-      buttons: ['excel'],
+      buttons: ['excel', 'pdf', 'print'],
       "bDestroy": true,
       "order": [],
       "autoWidth": true,
