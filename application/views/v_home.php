@@ -555,7 +555,7 @@
 		<![endif]-->
 
 		<!-- Demo purpose only -->
-		<script src="<?php echo base_url() ?>assets/js/demo.min.js"></script>
+		<!--<script src="<?php echo base_url() ?>assets/js/demo.min.js"></script>-->
 
 		<!-- MAIN APP JS FILE -->
 		<script src="<?php echo base_url() ?>assets/js/app.min.js"></script>
