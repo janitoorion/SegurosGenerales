@@ -45,7 +45,7 @@ class HomeController extends CI_Controller {
 	}
     
     public function crear_menu($codusuario) {
-        $menu = "<li class=''><a href='Inicio/Index' title='Inicio'><i class='fa fa-lg fa-fw txt-color-blue fa-home'></i><span class='menu-item-parent'>Inicio</span></a></li>";
+        $menu = "<li class=''><a href='HomeController/inicio' title='Inicio'><i class='fa fa-lg fa-fw fa-home'></i><span class='menu-item-parent'>Inicio</span></a></li>";
         $menu = $menu . $this->crear_menu_nivel_1($codusuario);
         return $menu;
     }
@@ -109,6 +109,10 @@ class HomeController extends CI_Controller {
         }
         
         redirect('HomeController', 'refresh');
+    }
+
+    public function inicio(){
+        $this->load->view('v_inicio');
     }
     
 }
