@@ -21,7 +21,7 @@
 	<div class="row">
 		
 		<!-- NEW WIDGET START -->
-		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			
 			<!-- Widget ID (each widget will need unique ID)-->
 			<div class="jarviswidget jarviswidget-color-blueDark" data-widget-sortable="false" data-widget-collapsed="false" data-widget-custombutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" id="wid-id-0">
@@ -40,7 +40,7 @@
 				-->
 				<header>
 					<span class="widget-icon"> <i class="fa fa-comments"></i> </span>
-					<h2>Nueva Persona</h2>				
+					<h2>Registro de Personas</h2>				
 					
 				</header>
 
@@ -57,130 +57,147 @@
 					<div class="widget-body-min-height-4  widget-body ">
 						<!-- this is what the user will see -->
                         <!-- Form content -->
-						<form action="" id="order-form" class="smart-form" novalidate="novalidate">
-							<header>
-								Order services
-							</header>
+						
 
-							<fieldset>
+						<form action="" method="post" id="contact-form" class="smart-form">
+							<header>Nueva Persona</header>
+							<fieldset>					
+								
 								<div class="row">
 									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-user"></i>
-											<input type="text" name="name" placeholder="Name">
-										</label>
-									</section>
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
-											<input type="text" name="company" placeholder="Company">
-										</label>
-									</section>
-								</div>
-
-								<div class="row">
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-											<input type="email" name="email" placeholder="E-mail">
-										</label>
-									</section>
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-phone"></i>
-											<input type="tel" name="phone" placeholder="Phone" data-mask="(999) 999-9999">
-										</label>
-									</section>
-								</div>
-							</fieldset>
-
-							<fieldset>
-								<div class="row">
-									<section class="col col-6">
+										<label class="label">Nacionalidad</label>
 										<label class="select">
-											<select name="interested">
-												<option value="0" selected="" disabled="">Interested in</option>
+											<select name="interested" name="lsNacionalidad" id="lsNacionalidad">
+												<option value="0">Interested in</option>
 												<option value="1">design</option>
 												<option value="1">development</option>
 												<option value="2">illustration</option>
 												<option value="2">branding</option>
 												<option value="3">video</option>
-											</select> <i></i> </label>
+											</select> 
+											<i></i> 
+										</label>
 									</section>
 									<section class="col col-6">
+										<label class="label">Tipo de Persona</label>
 										<label class="select">
-											<select name="budget">
-												<option value="0" selected="" disabled="">Budget</option>
-												<option value="1">less than 5000$</option>
-												<option value="2">5000$ - 10000$</option>
-												<option value="3">10000$ - 20000$</option>
-												<option value="4">more than 20000$</option>
-											</select> <i></i> </label>
+											<select name="interested" name="lsTipoPersona" id="lsTipoPersona" onchange="tipoForm();">
+												<option value="N">Natural</option>
+												<option value="J">Juridica</option>
+											</select> <i></i> 
+										</label>
 									</section>
 								</div>
 
 								<div class="row">
 									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-calendar"></i>
-											<input type="text" name="startdate" id="startdate" placeholder="Expected start date">
+										<label class="label">ID / RUT</label>
+										<label class="input">
+											<i class="icon-append fa fa-tag"></i>
+											<input type="text" name="txtRut" id="txtRut">
 										</label>
 									</section>
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-calendar"></i>
-											<input type="text" name="finishdate" id="finishdate" placeholder="Expected finish date">
+								</div>
+								
+								<section class="pernatural">
+									<label class="label">Nombre</label>
+									<label class="input">
+										<i class="icon-append fa fa-comment"></i>
+										<input type="text" name="txtNombre" id="txtNombre">
+									</label>
+								</section>
+								
+								<section class="pernatural">
+									<label class="label">Apellido Paterno</label>
+									<label class="input">
+										<i class="icon-append fa fa-comment"></i>
+										<input type="text" name="txtAp" id="txtAp">
+									</label>
+								</section>
+
+								<section class="pernatural">
+									<label class="label">Apellido Materno</label>
+									<label class="input">
+										<i class="icon-append fa fa-comment"></i>
+										<input type="text" name="txtAm" id="txtAm">
+									</label>
+								</section>
+
+								<section class="pernatural">
+									<label class="label">Fecha Nacimiento</label>
+									<label class="input">
+										<i class="icon-append fa fa-comment"></i>
+										<input type="text" class="form-control" data-mask="99/99/9999" data-mask-placeholder="-">
+									</label>
+									<p class="note">
+										Formato fecha dd/mm/yyyy
+									</p>
+								</section>
+
+								<div class="row">
+									<section class="col col-6 pernatural">
+										<label class="label">Sexo</label>
+										<label class="select">
+											<select name="interested" name="lsNacionalidad" id="lsNacionalidad">
+												<option value="0">Femenino</option>
+												<option value="1">Masculino</option>
+											</select> 
+											<i></i> 
 										</label>
 									</section>
 								</div>
 
-								<section>
-									<label for="file" class="input input-file">
-										<div class="button"><input type="file" name="file" onchange="this.parentNode.nextSibling.value = this.value">Browse</div><input type="text" placeholder="Include some files" readonly="">
+								<section class="perjuridica">
+									<label class="label">Razón Social</label>
+									<label class="input">
+										<i class="icon-append fa fa-comment"></i>
+										<input type="text" name="txtRs" id="txtRs">
+									</label>
+								</section>	
+								
+								<section  class="perjuridica">
+									<label class="label">Nombre de fantasía</label>
+									<label class="input">
+										<i class="icon-append fa fa-comment"></i>
+										<input type="text" name="txtNf" id="txtNf">
 									</label>
 								</section>
 
-								<section>
-									<label class="textarea"> <i class="icon-append fa fa-comment"></i> 										
-										<textarea rows="5" name="comment" placeholder="Tell us about your project"></textarea> 
-									</label>
-								</section>
 							</fieldset>
+							
 							<footer>
-								<button type="submit" class="btn btn-primary">
-									Validate Form
-								</button>
+								<button type="submit" class="btn btn-primary">Guardar</button>
 							</footer>
+							<!--
+							<div class="message">
+								<i class="fa fa-thumbs-up"></i>
+								<p>Your message was successfully sent!</p>
+							</div>
+							-->
 						</form>
                         <!-- end Form content -->
 					</div>
 					<!-- end widget content -->
-					
 				</div>
 				<!-- end widget div -->
-				
 			</div>
 			<!-- end widget -->
-
 		</article>
 		<!-- WIDGET END -->
-		
 	</div>
-
 	<!-- end row -->
-
 	<!-- row -->
-
 	<div class="row">
-
 		<!-- a blank row to get started -->
 		<div class="col-sm-12">
 			<!-- your contents here -->
-		</div>
 			
+		</div>
 	</div>
-
 	<!-- end row -->
-
 </section>
 <!-- end widget grid -->
-
 <script type="text/javascript">
-	
 	/* DO NOT REMOVE : GLOBAL FUNCTIONS!
 	 *
 	 * pageSetUp(); WILL CALL THE FOLLOWING FUNCTIONS
@@ -249,23 +266,30 @@
 	// only usable in AJAX version!
 
 	var pagedestroy = function(){
-		
 		/*
 		Example below:
-
 		$("#calednar").fullCalendar( 'destroy' );
 		if (debugState){
 			root.console.log("✔ Calendar destroyed");
 		} 
-
 		For common instances, such as Jarviswidgets, Google maps, and Datatables, are automatically destroyed through the app.js loadURL mechanic
-
 		*/
 	}
-
 	// end destroy
-	
+
 	// run pagefunction
 	pagefunction();
-	
+
+	function tipoForm(){
+		if($('#lsTipoPersona').val() == 'N'){
+			$('.perjuridica').hide();
+			$('.pernatural').show();
+		}else{
+			$('.perjuridica').show();
+			$('.pernatural').hide();
+		}
+	}
+	$(document).ready(function() {
+		$('.perjuridica').hide();
+	});
 </script>

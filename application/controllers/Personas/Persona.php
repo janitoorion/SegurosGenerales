@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class PersonaController extends CI_Controller {
+class Persona extends CI_Controller {
     
     public function __construct() {
 		parent::__construct();
@@ -17,7 +17,7 @@ class PersonaController extends CI_Controller {
 	}
 
     public function nuevaPersona()	{
-        $this->load->view('ajax/persona/persona/v_nuevapersona');
+        $this->load->view('ajax/personas/persona/v_nuevapersona');
 	}
 
     
