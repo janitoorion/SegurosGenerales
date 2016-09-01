@@ -39,3 +39,7 @@
 .widget-body-min-height-10 {
     min-height: 1000px !important;
 }
+
+.smart-form section {
+    margin-bottom: 5px !important;
+}
