@@ -25,7 +25,9 @@ class Persona extends CI_Controller {
 
         //Lista Sexo de Personas
         $result = $this->PersonasModel->listaTiposDePersonas();
-        $datos["tipopersona"] = $result["cursor"];
+        $datos["sexopersona"] = $result["cursor"];
+
+        
 
         $this->load->view('ajax/personas/persona/v_nuevapersona',$datos);
 	}
